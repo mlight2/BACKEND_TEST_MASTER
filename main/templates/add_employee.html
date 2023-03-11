@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Employee</title>
+</head>
+<body>
+	<h1>Add Employee</h1>
+	{% if form.errors %}
+    <ul>
+    {% for field_errors in form.errors.values %}
+        {% for error in field_errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    {% endfor %}
+    </ul>
+{% endif %}
+	<form method="post" action="{% url 'add_employee' %}">	
+		{% csrf_token %}
+		<label for="first_name">First name:</label><br>
+		<input type="text" id="first_name" name="first_name"><br>
+		<label for="last_name">Last name:</label><br>
+		<input type="text" id="last_name" name="last_name"><br>
+		<label for="comment">Comment:</label><br>
+		<textarea id="comment" name="comment"></textarea><br>
+		<label for="company_name">Company:</label><br>
+		<input type="text" id="company_name" name="company_name" required><br>
+		<input type="submit" value="Submit">
+	  </form>
+</body>
+</html>

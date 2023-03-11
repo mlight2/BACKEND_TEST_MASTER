@@ -1,0 +1,13 @@
+{% load static %}
+<form method="POST">
+    {% csrf_token %}
+    <label for="employee">Select an employee:</label>
+    <select id="employee" name="employee_id">
+      {% for employee in employees %}
+        <option value="{{ employee.id }}">{{ employee }}</option>
+      {% endfor %}
+    </select>
+    <br><br>
+    <input type="submit" value="Add employee">
+  </form>
+  
